@@ -1,9 +1,11 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Store } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
 import { PaginationService } from '../../../shared/services/pagination.service';
 // import { environment } from 'src/environments/environment';
 //  import { PaginationService } from '../../../shared/services/pagination.service';
@@ -18,10 +20,11 @@ describe('ProductListComponent', () => {
       imports: [BrowserModule,
         BrowserAnimationsModule,
         RouterTestingModule,
-        FormsModule, Store],
+        FormsModule],
 
       declarations: [ProductListComponent],
-      providers: [PaginationService]
+      providers: [PaginationService, provideMockStore({ initialState: { pagination: '' } })],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   }));

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PaginationService } from '../../../shared/services/pagination.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../../environments/environment';
 import * as fromProductActions from '../state/product.actions';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../../../store';
@@ -37,7 +37,7 @@ export class ProductListComponent implements OnInit {
   loadProducts(url: string) {
     this.store.dispatch(
       fromProductActions.loadAdminProducts({
-        url:url,
+        url: url,
       })
     );
     this.currentUrl = url;

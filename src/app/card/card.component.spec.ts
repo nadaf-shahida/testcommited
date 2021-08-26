@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CardComponent } from './card.component';
@@ -8,7 +9,8 @@ describe('CardComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [CardComponent]
+      declarations: [CardComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   }));
@@ -24,8 +26,9 @@ describe('CardComponent', () => {
   });
 
   it('should call handleBtnClick() and print console.log', () => {
+    console.log = jest.fn();
     component.handleBtnClick();
     expect(console.log).toHaveBeenCalledWith('clicked')
-});
+  });
 
 });
